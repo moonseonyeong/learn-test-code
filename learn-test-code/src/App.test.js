@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
 
 
@@ -24,3 +24,23 @@ test('plus button has correct text', () => {
   expect(plusButton).toHaveTextContent("+");
 })
 
+
+test("When the + button is pressed, the counter changes to 1", () => {
+  render(<App />);
+  const plusButtonElement = screen.getByTestId("plus-button");
+
+  fireEvent.click(plusButtonElement);
+
+  const counterElement = screen.getByTestId("counter");
+  expect(counterElement).toHaveTextContent("1");
+})
+
+test("When the - button is pressed, the counter changes to -1", () => {
+  render(<App />);
+  const minusButtonElement = screen.getByTestId("minus-button");
+
+  fireEvent.click(minusButtonElement);
+
+  const counterElement = screen.getByTestId("counter");
+  expect(counterElement).toHaveTextContent("-1");
+})
