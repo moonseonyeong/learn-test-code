@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 
-const host = 'http://localhost:5000'
+export const host = 'http://localhost:5000'
 
 export const handlers = [
   rest.get(`${host}/products`, (req, res, ctx) => {

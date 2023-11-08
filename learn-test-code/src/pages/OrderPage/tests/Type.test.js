@@ -1,11 +1,13 @@
 import { render, screen } from "@testing-library/react"
-import Type from "../Type"
+import Type from "../Type.js"
 
 test("displays product images from server", async () => {
   render(<Type orderType="products" />);
 
-  const productImages = await screen.findAllByRole("img", { name: /product$/i });
-
+  // 이미지 찾기
+  const productImages = await screen.findAllByRole("img", {
+    name: /product$/i,
+  });
   expect(productImages).toHaveLength(2);
 
   const altText = productImages.map((element) => element.alt);
